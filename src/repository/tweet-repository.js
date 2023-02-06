@@ -19,7 +19,7 @@ class TweetRepository{
     }
     async getWitComment(id){
         try {
-            const tweet=await Tweet.findById(id).populate({path:'comment'});
+            const tweet=await Tweet.findById(id).populate({path:'comment'}).lean();
             return tweet;
         } catch (error) {
             console.log(error);
@@ -41,6 +41,15 @@ class TweetRepository{
             console.log(error);
         }
     } 
+    async getAll(offset, limit){
+        try {
+            console.log(limit);
+            const tweet=await Tweet.find().skip(offset).limit(limit);
+            return tweet;
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 
 module.exports=TweetRepository;

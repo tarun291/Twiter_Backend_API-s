@@ -16,8 +16,10 @@ app.listen(3300, async () => {
         content: "Third tweet",
         userEmail: "arun@gmail.com"
     }
-    const tweet=await tweetRepository.getWitComment('63de98ad58f4e9e1fe766a37')
-    console.log(tweet); 
+    const tweet=await tweetRepository.getAll(0,4);
+    console.log(tweet[0]._id);
+    console.log(tweet[0].id)
 })
 
 
+// jagzmz
