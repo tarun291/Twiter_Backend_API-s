@@ -2,8 +2,7 @@ const express = require('express')
 
 const connet = require('./config/database');
 const app = express()
-
-
+const mongoose=require('mongoose');
 const TweetRepository = require('./repository/tweet-repository');
 const Comment = require('./model/comment');
 
@@ -12,12 +11,12 @@ app.listen(3300, async () => {
     await connet();
     console.log('MongoDB connected Successfully');
     const tweetRepository = new TweetRepository();
-    
+    // console.log(mongoose);
     // const tweet=await tweetRepository.getAll(0,4);
     // console.log(tweet[0]._id);
     // console.log(tweet[0].id)
-    const tweet=await tweetRepository.create({content:'Tweet with hooks'});
-    console.log(tweet)
+    // const tweet=await tweetRepository.create({content:'Tweet with hooks'});
+    // console.log(tweet)
 })
 
 
