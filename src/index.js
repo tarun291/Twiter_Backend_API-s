@@ -12,13 +12,12 @@ app.listen(3300, async () => {
     await connet();
     console.log('MongoDB connected Successfully');
     const tweetRepository = new TweetRepository();
-    const obj = {
-        content: "Third tweet",
-        userEmail: "arun@gmail.com"
-    }
-    const tweet=await tweetRepository.getAll(0,4);
-    console.log(tweet[0]._id);
-    console.log(tweet[0].id)
+    
+    // const tweet=await tweetRepository.getAll(0,4);
+    // console.log(tweet[0]._id);
+    // console.log(tweet[0].id)
+    const tweet=await tweetRepository.create({content:'Tweet with hooks'});
+    console.log(tweet)
 })
 
 
