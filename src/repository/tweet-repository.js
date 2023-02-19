@@ -2,6 +2,7 @@ const Tweet=require('../model/tweet')
 
 class TweetRepository{
     async create(data){
+        // console.log(data);
         try {
             const tweet=await Tweet.create(data);
             return tweet;
@@ -17,7 +18,7 @@ class TweetRepository{
             console.log(error);
         }
     }
-    async getWitComment(id){
+    async getWithComment(id){
         try {
             const tweet=await Tweet.findById(id).populate({path:'comment'}).lean();
             return tweet;
