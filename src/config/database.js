@@ -1,7 +1,4 @@
-const mongoose=require('mongoose')
-
-const connet=async()=>{
+import mongoose from "mongoose";
+export const connet = async () => {
     await mongoose.connect('mongodb://localhost/twitter_dev');
 }
-
-module.exports=connet;
