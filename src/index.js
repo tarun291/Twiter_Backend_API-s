@@ -10,8 +10,11 @@ app.listen(3700, async () => {
     await connet();
     console.log('MongoDB connected Successfully');
     const service = new TweetService();
-    const response=await service.create({content:"This is my #fisrt tweet after coding in #ES6 moduling"});
-    console.log(response);
+    const obj={
+        content:'Capital #JBHEFO '
+    }
+    const response=await service.create(obj);
+    console.log('response=',response);
 })
 
 

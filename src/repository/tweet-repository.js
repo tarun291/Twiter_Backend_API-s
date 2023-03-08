@@ -2,7 +2,6 @@ import Tweet from '../model/tweet.js';
 
 class TweetRepository{
     async create(data){
-        // console.log(data);
         try {
             const tweet=await Tweet.create(data);
             return tweet;
