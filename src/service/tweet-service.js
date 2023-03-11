@@ -19,8 +19,7 @@ class TweetService {
         alreadyPresentTags.forEach((tag) => {
             tag.tweets.push(tweet.id);
             tag.save();
-        })
-        
+        })        
         return tweet;
     }
 }
