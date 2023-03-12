@@ -6,13 +6,13 @@ class TweetRepository extends CrudRepository{
     }
     async create(data){
         try {
+            console.log(data);
             const tweet=await Tweet.create(data);
             return tweet;
         } catch (error) {
             console.log(error);
         }
     }
-
     async getWithComment(id){
         try {
             const tweet=await Tweet.findById(id).populate({path:'comment'}).lean();
@@ -23,7 +23,6 @@ class TweetRepository extends CrudRepository{
     }
     async getAll(offset, limit){
         try {
-            console.log(limit);
             const tweet=await Tweet.find().skip(offset).limit(limit);
             return tweet;
         } catch (error) {

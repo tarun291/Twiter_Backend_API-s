@@ -11,7 +11,6 @@ class HashtagRepository{
     }
     async bulkCreate(data){
         try {
-            console.log(data);
             const tags=await Hashtag.insertMany(data);
             return tags;
         } catch (error) {

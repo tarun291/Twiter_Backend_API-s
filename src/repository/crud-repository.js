@@ -22,15 +22,15 @@ class CrudRepository{
     }
     async get(id){
         try {
-            const result=await this.model.findById(id);
+            const result=await this.model.findById(id).populate({path:'likes'})
             return result;        
         } catch (error) {
             console.log('Somthing went wrong in crud repo')
         }
     }
-    async getAll(id){
+    async getAll(){
         try {
-            const result=await this.model.find({});
+            const result=await this.model.find();
             return result;        
         } catch (error) {
             console.log('Somthing went wrong in crud repo')
