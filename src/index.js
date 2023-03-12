@@ -15,13 +15,13 @@ app.listen(3700, async () => {
     console.log('server started at port', 3700)
     await connect();
     console.log('MongoDB connected Successfully');
-    let userRepo=new UserRepository();
-    let tweetRepo=new TweetRepository();
-    const tweets=await tweetRepo.getAll(0,10);
-    const user=await userRepo.getAll();
-    const likeService=new LikeService();
-    let flag=await likeService.toggleLike(tweets[0].id,'Tweet',user[0].id)
-    console.log(flag);
+    // let userRepo=new UserRepository();
+    // let tweetRepo=new TweetRepository();
+    // const tweets=await tweetRepo.getAll(0,10);
+    // const user=await userRepo.getAll();
+    // const likeService=new LikeService();
+    // let flag=await likeService.toggleLike(tweets[0].id,'Tweet',user[0].id)
+    // console.log(flag);
 
 })
 
