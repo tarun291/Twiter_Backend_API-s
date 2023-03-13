@@ -4,6 +4,7 @@ class LikeRepository extends CrudRepository{
     constructor(){
         super(Like)
     }
+    
     async findByUserAndLikeable(data){
         try {
             const like=await Like.findOne(data);
@@ -12,6 +13,7 @@ class LikeRepository extends CrudRepository{
             throw error
         }
     }
+
 }
 
 export default LikeRepository;
