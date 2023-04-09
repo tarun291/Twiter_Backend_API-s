@@ -1,18 +1,19 @@
 import mongoose from "mongoose";
 import bcrypt from 'bcrypt';
-const userShema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     name:{
         type:String,
     },
     email: {
         type: String,
+        unique:true
     },
     password: {
         type: String,
     }
 }, { timestamps: true })
 
-userShema.pre('save', function (next) {
+userSchema.pre('save', function (next) {
     const user = this;
     const SALT = bcrypt.genSaltSync(9);
     const encryptedPassword = bcrypt.hashSync(user.password, SALT);
@@ -20,8 +21,17 @@ userShema.pre('save', function (next) {
     next();
 })
 
+userSchema.methods.comparePassword=function compare(password){
+    return bcrypt.compareSync(password,this.password);
+}
 
-const User = mongoose.model('User', userShema)
+userSchema.methods.genJWT=function generate(){
+    return JsonWebTokenError.sign({id:this._id,email:this.email},'twitter-api',{
+        expiresIn:'1h'
+    });
+}
+//55 min
+const User = mongoose.model('User', userSchema)
 
 
 export default User;
