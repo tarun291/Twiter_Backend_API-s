@@ -1,9 +1,10 @@
 import express from 'express'
 
-import { createTweet ,getTweet} from '../../controllers/tweet-controller.js'
+import { createTweet, getTweet } from '../../controllers/tweet-controller.js'
 import { toggleLike } from '../../controllers/like-controller.js'
 import { createComment } from '../../controllers/comment-controller.js'
 import { signup } from '../../controllers/auth-controller.js'
+import { validateUserAuth } from '../../middleware/auth-request-validators.js'
 const router = express.Router();
 
 router.post('/tweet', createTweet);
@@ -13,6 +14,6 @@ router.post('/likes/toggle', toggleLike)
 
 router.post('/comments', createComment);
 
-router.post('/signup',signup);
+router.post('/signup', validateUserAuth, signup);
 
 export default router;
