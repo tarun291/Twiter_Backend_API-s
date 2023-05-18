@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken'
 const userSchema = new mongoose.Schema({
     name:{
         type:String,
@@ -10,7 +11,7 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-    }
+    },
 }, { timestamps: true })
 
 userSchema.pre('save', function (next) {
@@ -26,7 +27,7 @@ userSchema.methods.comparePassword=function compare(password){
 }
 
 userSchema.methods.genJWT=function generate(){
-    return JsonWebTokenError.sign({id:this._id,email:this.email},'twitter-api',{
+    return jwt.sign({id:this._id,email:this.email},'twitter-api',{
         expiresIn:'1h'
     });
 }
