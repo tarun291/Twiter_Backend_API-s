@@ -20,15 +20,15 @@ class UserService {
             throw error;
         }
     }
-    async signin(email,password){
+    async signin(data){
         try {
-            const user=await this.getUserByEmail(email);
+            const user=await this.getUserByEmail(data.email);
             if(!user){
                 throw {
                     message: 'no user found'
                 };
             }
-            if(!user.comparePassword(password)) {
+            if(!user.comparePassword(data.password)) {
                 throw {
                     message: 'incorrect password',
                 };

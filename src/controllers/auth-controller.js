@@ -27,7 +27,8 @@ export const signup = async (req, res) => {
 
 export const login = async (req, res) => {
     try {
-        const token=await userService.signin(req.body.email,req.body.password);
+        console.log(req.body)
+        const token=await userService.signin(req.body);
         return res.status(200).json({
             success: true,
             message: 'Successfully logged in',
