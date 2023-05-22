@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(passport.initialize());
 passportAuth(passport);
 
-app.use('/api', apiRoutes);
+app.use('/api', apiRoutes)
 
 
 app.listen(3700, async () => {
