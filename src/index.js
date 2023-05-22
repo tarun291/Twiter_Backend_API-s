@@ -22,5 +22,5 @@ app.use('/api', apiRoutes)
 app.listen(3700, async () => {
     console.log('server started');
     await connect();
-    console.log('Mongo db connected');
+    console.log('Mongo db connected')
 });
