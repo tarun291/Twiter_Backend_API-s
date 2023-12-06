@@ -1,5 +1,9 @@
 import mongoose from "mongoose";
-
+import 'dotenv/config'
 export const connect = async () => {
-    await mongoose.connect('mongodb://localhost/twitter_dev');
+    try {
+        await mongoose.connect(process.env.MONGODB_URI);
+    } catch (error) {
+        throw new Error(error.message)
+    }
 }
