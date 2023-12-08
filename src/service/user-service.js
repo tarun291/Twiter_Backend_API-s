@@ -23,6 +23,7 @@ class UserService {
     }
     async signin(data){
         try {
+            console.log('inside signin',data)
             const user=await this.getUserByEmail(data.email);
             if(!user){
                 throw {
