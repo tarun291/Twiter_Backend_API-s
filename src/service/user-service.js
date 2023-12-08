@@ -6,6 +6,7 @@ class UserService {
     }
     async signup(data) {
         try {
+            console.log('inside signup')
             const user = await this.userRepository.create(data);
             return user;
         } catch (error) {
