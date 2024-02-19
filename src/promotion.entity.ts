@@ -13,5 +13,5 @@ export class Promotion extends Base {
     html: string;
     @Field(() => String)
     @Column()
-    userId: string
+    userId: string;
 }
